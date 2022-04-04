@@ -75,29 +75,27 @@ If there is any error on the type of the data, formatting or fields missing. The
 }
 ```
 ## How it works
-1. Processor
+1. Processor  
 First, the data are cleaned. That means that we drop all the entirely empty rows, string values
 are cleaned up, outliers and properties without price and area indication are dropped, duplicates
-and columns with the lowest correlation rate are deleted, and some other minor riddances.  
+and columns with the lowest correlation rate are deleted, and some other minor riddances.    
 
 To put everything ready for the rest of the process, the variables that remain are transformed into
-features.
+features.  
 
-2. Model
+2. Model  
 In the second step, the prediction is prepared. Firstly, the price, area, outside space and land
 surface are rescaled. This is done in order to apreciate more linealy the relationship between price and area.
 
-Secondly, the database is split and into a train and test dataframe. The first one is used to train the model.
+Secondly, the database is split and into a train and test dataframe. The first one is used to train the model.  
 
-Then we score our model, getting a 85% of accuracy in hour predictions.
+3. Predictor  
+This object is going to be initializated when the app.py is runned. This predictor will load the model which is already trained to make the prediction.  
 
-3. Predictor 
-This object is going to be initializated when the app.py is runned. This predictor will load the model which is already trained to make the prediction.
+The data is checked to see if there is any error in the format or/and type, then preprocessed and it columns reformated in order to get a matrix with the required size and pased trough our model to get the prediction.  
 
-The data is checked to see if there is any error in the format or/and type, then preprocessed and it columns reformated in order to get a matrix with the required size and pased trough our model to get the prediction.
-
-4. app.py
-Here is where the `POST` and `GET` requests are processed. 
+4. app.py  
+Here is where the `POST` and `GET` requests are processed.   
 
 ## Author
 Saina Nuersulitan  
